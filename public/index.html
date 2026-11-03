@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My RPA Factory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo-container">
+        <span class="logo-dot"></span>
+        <h1>My RPA Factory</h1>
+      </div>
+      <p class="subtitle">Importez vos données d'entrée Excel et lancez l'automatisation en un clic</p>
+    </header>
+
+    <main class="app-content">
+      <!-- Section Gauche : Upload & Actions -->
+      <section class="control-panel">
+        <div class="card upload-card">
+          <h2>1. Fichier de Données</h2>
+          <div class="drop-zone" id="dropZone">
+            <div class="drop-zone-icon">📊</div>
+            <p class="drop-zone-text">Glissez-déposez votre fichier Excel (.xlsx) ici ou <span>parcourez vos fichiers</span></p>
+            <input type="file" id="fileInput" accept=".xlsx" style="display: none;">
+          </div>
+          
+          <div class="file-details" id="fileDetails" style="display: none;">
+            <div class="file-info-header">
+              <span class="file-icon">📄</span>
+              <div class="file-meta">
+                <span class="file-name" id="fileName">nom_du_fichier.xlsx</span>
+                <span class="file-rows" id="fileRows">0 lignes trouvées</span>
+              </div>
+              <button class="btn-clear" id="btnClear" title="Supprimer le fichier">×</button>
+            </div>
+
+            <div class="preview-container">
+              <span class="preview-title">Aperçu des données :</span>
+              <div class="table-wrapper">
+                <table id="previewTable">
+                  <!-- L'aperçu dynamique sera inséré ici -->
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card action-card">
+          <h2>2. Exécution</h2>
+          <button class="btn-run" id="btnRun" disabled>
+            <span class="btn-text">Lancer le script index.js</span>
+            <span class="btn-loader" style="display: none;"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Section Droite : Console Log -->
+      <section class="console-panel">
+        <div class="card console-card">
+          <div class="console-header">
+            <h3>Console d'exécution</h3>
+            <div class="console-actions">
+              <button class="btn-console-clear" id="btnClearConsole">Effacer</button>
+              <span class="status-indicator offline" id="statusIndicator">Hors ligne</span>
+            </div>
+          </div>
+          <div class="console-body" id="consoleBody">
+            <div class="console-line system">Console prête. Veuillez uploader un fichier Excel puis lancer le script.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
